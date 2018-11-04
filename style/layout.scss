@@ -50,6 +50,10 @@ body {
           border-color: #c6c6c6;
           background-color: #f0f0f0;
           box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
+
+          .search-btn {
+            color: #333333;
+          }
         }
       }
 
@@ -63,8 +67,33 @@ body {
 
       .search-btn {
         color: #d3d3d3;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
+    }
+  }
+
+  .top-right-menu {
+    padding-top: 10px;
+    padding-right: 16px;
+
+    svg {
+      margin-right: 30px;
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+    }
+
+    svg,
+    img {
+      cursor: pointer;
+    }
+
+    .icon {
+      font-size: 1.0rem;
+      color: #a0a0a0;
     }
   }
 }

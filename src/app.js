@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faSearch, faBell, faVideo, faTh, faComment} from "@fortawesome/free-solid-svg-icons";
 
+import user from '../img/user.jpg';
 import logo from '../img/logo.png';
 import sampleImage from '../img/sampleimg.jpg';
 
@@ -23,13 +24,31 @@ export default class App extends Component {
                                     </a>
                                 </div>
                             </div>
-                            <div className="col-4 text-center bg-light">
+                            <div className="col-4 text-center">
                                 {this.getSearchBar()}
                             </div>
-                            <div className="col bg-info">03</div>
+                            <div className="col top-right-menu">
+                                {this.getTopRightMenu()}
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        );
+    }
+
+    getTopRightMenu() {
+        return(
+            <div className='text-right'>
+                <FontAwesomeIcon icon={faVideo}
+                                 className='icon'/>
+                <FontAwesomeIcon icon={faTh}
+                                 className='icon'/>
+                <FontAwesomeIcon icon={faComment}
+                                 className='icon'/>
+                <FontAwesomeIcon icon={faBell}
+                                 className='icon'/>
+                <img src={user} />
             </div>
         );
     }
