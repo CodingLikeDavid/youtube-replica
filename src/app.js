@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {connect} from 'react-redux';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faSearch, faBell, faVideo, faTh, faComment} from "@fortawesome/free-solid-svg-icons";
 
@@ -7,7 +9,22 @@ import user from '../img/user.jpg';
 import logo from '../img/logo.png';
 import sampleImage from '../img/sampleimg.jpg';
 
-export default class App extends Component {
+import SearchBar from './components/SearchBar';
+import SearchResults from './components/SearchResults';
+
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            videos: [],
+            isLoading: false,
+            searchTerm: ''
+        }
+
+        this.setLoading = this.setLoading.bind(this);
+    }
 
     getTopToolbar() {
         return (
@@ -38,7 +55,7 @@ export default class App extends Component {
     }
 
     getTopRightMenu() {
-        return(
+        return (
             <div className='text-right'>
                 <FontAwesomeIcon icon={faVideo}
                                  className='icon'/>
@@ -48,22 +65,20 @@ export default class App extends Component {
                                  className='icon'/>
                 <FontAwesomeIcon icon={faBell}
                                  className='icon'/>
-                <img src={user} />
+                <img src={user}/>
             </div>
         );
     }
 
+    setLoading(isLoading) {
+        this.setState({
+            isLoading
+        });
+    }
+
     getSearchBar() {
         return (
-            <div className="row search-area pr-2 pl-2">
-                <div className="col-11">
-                    <input type="text" placeholder="Keresés"/>
-                </div>
-                <div className="col">
-                    <FontAwesomeIcon icon={faSearch}
-                                     className='fa-2x search-btn'/>
-                </div>
-            </div>
+            <SearchBar setLoading={this.setLoading}/>
         );
     }
 
@@ -83,6 +98,7 @@ export default class App extends Component {
                                     {this.getBox()}
                                     {this.getBox()}
                                 </div>
+                                <div className="separator-line"></div>
                             </div>
                         </div>
                     </div>
@@ -107,13 +123,47 @@ export default class App extends Component {
         );
     }
 
-    render() {
+    getLoadingBar() {
+        if (this.state.isLoading) {
+            return (
+                <div className="row">
+                    <div className="col">
+                        <div className='loader'></div>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    getSearchResultArea() {
         return (
-            <div className='container-fluid'>
-                {this.getTopToolbar()}
-                {this.getContentArea()}
+            <div className="row pt-3">
+                <div className="col">
+                    <div className="container search-result-area">
+                        <SearchResults />
+                    </div>
+                </div>
             </div>
         );
     }
 
+    render() {
+        return (
+            <div className='container-fluid'>
+                {this.getLoadingBar()}
+                {this.getTopToolbar()}
+                {!this.props.term && this.getContentArea()}
+                {this.props.term && this.getSearchResultArea()}
+            </div>
+        );
+    }
 }
+
+function mapStateToProps(state) {
+    return {
+        term: state.search.term,
+        videos: state.search.videos
+    }
+}
+
+export default connect(mapStateToProps, null)(App);
