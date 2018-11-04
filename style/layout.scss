@@ -1,0 +1,59 @@
+$h1-font-size: 1.2rem;
+$h2-font-size: 1.1rem;
+$grid-gutter-width: 0px;
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 10px;
+  background-color: #fafafa;
+}
+
+.top-toolbar {
+  .row {
+    height: 56px;
+  }
+}
+
+.card {
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  background-color: inherit;
+
+  &:first-of-type {
+    margin-left: 0 !important;
+  }
+
+  &:last-of-type {
+    margin-right: 0 !important;
+  }
+
+  .info {
+    font-size: 0.8rem;
+
+    &:first-of-type {
+      padding-bottom: 2px;
+    }
+
+    span {
+      &:first-of-type:after {
+        content: '•';
+        margin: 0 4px;
+      }
+    }
+  }
+
+  .card-img-top {
+    border: none;
+    border-radius: 0;
+  }
+
+  h2 {
+    padding-top: 6px;
+    max-height: 3.2rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+  }
+}
