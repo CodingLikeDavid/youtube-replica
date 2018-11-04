@@ -10,9 +10,62 @@ body {
   background-color: #fafafa;
 }
 
+.svg-inline--fa {
+  vertical-align: -0.4em !important;
+}
+
 .top-toolbar {
+  background-color: #FFF;
+  padding-left: 16px;
+  padding-right: 16px;
+
   .row {
-    height: 56px;
+    .menu {
+      padding-left: 16px;
+      padding-top: 18px;
+      padding-bottom: 18px;
+
+      .icon {
+        cursor: pointer;
+        color: #a0a0a0;
+        font-size: 1.2rem;
+      }
+
+      img {
+        margin-left: 30px;
+      }
+    }
+
+    .search-area {
+      padding-top: 12px;
+
+      div:last-of-type {
+        border-right: 1px solid #d3d3d3;
+        border-top: 1px solid #d3d3d3;
+        border-bottom: 1px solid #d3d3d3;
+        padding-top: 4px;
+        border-radius: 0 2px 2px 0;
+
+        &:hover {
+          border-color: #c6c6c6;
+          background-color: #f0f0f0;
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
+        }
+      }
+
+      input {
+        width: 100%;
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 16px;
+        border: 1px solid #d3d3d3;
+      }
+
+      .search-btn {
+        color: #d3d3d3;
+        font-size: 0.9rem;
+      }
+    }
   }
 }
 
